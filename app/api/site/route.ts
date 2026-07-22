@@ -1,30 +1,10 @@
-// app/api/site/route.ts
 import { NextRequest, NextResponse } from "next/server";
-
-export async function GET(req: NextRequest) {
-  // VALIDASI VAULT COOKIES
-  const vault = req.cookies.get("sylvor_vault")?.value;
-  const sid = req.cookies.get("sylvor_sid")?.value;
-  if (!vault ||!sid) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
-  }
-
-  // VALIDASI SITE TOKEN
-  const siteToken = req.headers.get("x-site-token") || req.nextUrl.searchParams.get("site_token");
-  if (siteToken!== process.env.NEXT_PUBLIC_SITE_KEY && siteToken!== process.env.SITE_TOKEN) {
-    return NextResponse.json({ error: "Invalid site token" }, { status: 403 });
-  }
-
-  // VALIDASI BROWSER LANGUAGE
-  const lang = req.headers.get("accept-language") || "en";
-  const fp = req.headers.get("x-fp-hash");
-
-  return NextResponse.json({
-    site: "sylvor_labs",
-    status: "active",
-    vault_ok: true,
-    fp: fp?.slice(0, 10) + "...",
-    lang_detected: lang.split(",")[0],
-    timestamp: Date.now(),
-  });
+function forbid(){ return new NextResponse(`for(;;);{"__ar":1,"error":1357004}`,{status:200,headers:{"Content-Type":"text/javascript"}}); }
+export async function GET(req: NextRequest){
+  const chain=req.cookies.get("sylvor_chain")?.value;
+  const siteCookie=req.cookies.get("sylvor_site_token")?.value;
+  const siteHeader=req.headers.get("x-site-token")||req.headers.get("x-sylvor-site-token");
+  if(chain!=="f"||!siteCookie) return forbid();
+  if(siteHeader&&siteCookie!==siteHeader) return forbid();
+  return NextResponse.json({site:"sylvor_labs",status:"active",ts:Date.now()});
 }

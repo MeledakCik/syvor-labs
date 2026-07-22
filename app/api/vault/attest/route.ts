@@ -1,22 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-
-export async function GET(req: NextRequest) {
-  const vault = req.cookies.get("sylvor_vault")?.value;
-  const sid = req.cookies.get("sylvor_sid")?.value;
-  const policy = req.cookies.get("sylvor_policy_ok")?.value;
-
-  if (!vault || !sid || !policy) {
-    return NextResponse.json(
-      { logged_in: false, error: "vault_incomplete", __ar: 1 }, 
-      { status: 403 }
-    );
-  }
-
-  // kalau lolos, baru logged_in true
-  return NextResponse.json({ 
-    logged_in: true, 
-    app_logged_in: true,
-    vault: { available: true, attested: true },
-    __ar: 1 
-  });
+function forbid(){ return new NextResponse(`for(;;);{"__ar":1,"error":1357004}`,{status:200,headers:{"Content-Type":"text/javascript","x-security-policy":"enforced"}}); }
+export async function GET(req: NextRequest){
+  if(req.cookies.get("sylvor_chain")?.value!=="b") return forbid();
+  const isProd=process.env.NODE_ENV==="production";
+  const res=NextResponse.json({ok:1});
+  res.cookies.set("sylvor_chain","c",{httpOnly:true,secure:isProd,sameSite:"lax",path:"/",maxAge:600});
+  return res;
 }

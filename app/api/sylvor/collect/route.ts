@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-export async function GET(req: NextRequest) {
-  const policy = req.cookies.get("sylvor_policy_ok")?.value;
-  if (!policy) return NextResponse.json({ status:"blocked" }, { status: 403 });
-  return NextResponse.json({ status:"collected", t: Date.now() });
+function forbid(){ return new NextResponse(`for(;;);{"__ar":1,"error":1357004}`,{status:200,headers:{"Content-Type":"text/javascript"}}); }
+export async function GET(req: NextRequest){
+  if(req.cookies.get("sylvor_chain")?.value!=="e") return forbid();
+  const isProd=process.env.NODE_ENV==="production";
+  const res=NextResponse.json({ok:1});
+  res.cookies.set("sylvor_chain","f",{httpOnly:true,secure:isProd,sameSite:"lax",path:"/",maxAge:600});
+  return res;
 }
