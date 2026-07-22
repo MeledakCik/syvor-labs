@@ -101,7 +101,6 @@ export default function SecurityGate({
     };
   }, []);
 
-  // FIX PUTIH ANEH -> jangan return div putih, tapi render children dengan opacity 0 + skeleton
   if (!ok) {
     return (
       <div style={{ minHeight: "100vh", background: "#0a0a0a" }}>

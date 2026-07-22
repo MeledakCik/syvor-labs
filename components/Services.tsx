@@ -74,10 +74,7 @@ function BorderCard({
           "radial-gradient(400px circle at var(--mx) var(--my), rgba(255,255,255,0.15), transparent 40%)",
       }}
     >
-      {/* Border default */}
       <div className="pointer-events-none absolute inset-0 rounded-[15px] border border-zinc-200 dark:border-white/10" />
-
-      {/* Spotlight - cuma nyala di border */}
       <div
         className="pointer-events-none absolute inset-0 rounded-[15px] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         style={
@@ -93,7 +90,6 @@ function BorderCard({
         }
       />
 
-      {/* Inner - rounded 15 biar gak dempet sama border 16 */}
       <div className="relative rounded-[15px] bg-white p-6 transition-all duration-300 group-hover:-translate-y-[1px] dark:bg-[#121214] md:p-7">
         {children}
       </div>

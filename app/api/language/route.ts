@@ -7,8 +7,6 @@ export async function GET(req: NextRequest) {
 
   const acceptLang = req.headers.get("accept-language") || "en-US,en;q=0.9";
   const languages = acceptLang.split(",").map(l => l.split(";")[0].trim());
-
-  // BOT biasanya cuma kirim "en" doang, browser asli kirim "en-US,en;q=0.9,id;q=0.8"
   if (languages.length < 2) {
     return NextResponse.json({ error: "suspicious_language", is_bot: true }, { status: 403 });
   }

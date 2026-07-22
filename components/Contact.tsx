@@ -29,7 +29,6 @@ export default function Contact() {
       id="contact"
       className="relative w-full overflow-hidden bg-[#FDFCF8] py-20 text-zinc-900 dark:bg-[#050507] dark:text-white md:py-28"
     >
-      {/* grid + glow fix */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:64px_64px] dark:bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)]" />
         <div className="absolute -top-32 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-black/[0.03] blur-3xl dark:bg-white/[0.04]" />
@@ -38,7 +37,6 @@ export default function Contact() {
 
       <div className="relative mx-auto max-w-7xl px-5 md:px-8">
         <div className="grid gap-12 md:grid-cols-[0.9fr_1.1fr] md:gap-16">
-          {/* Left */}
           <div className={`transition-all duration-700 ${visible? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}>
             <div className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-black/[0.03] px-3 py-1 text-xs text-zinc-600 dark:border-white/10 dark:bg-white/5 dark:text-white/60">
               <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
@@ -73,7 +71,6 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Right Form */}
           <div className={`rounded-2xl border border-black/10 bg-white p-1.5 shadow-sm transition-all duration-700 dark:border-white/10 dark:bg-[#111113] md:p-2 ${visible? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`} style={{ transitionDelay: "200ms" }}>
             <div className="rounded-xl bg-zinc-50 p-6 dark:bg-[#111113] md:p-8">
               <div className="grid gap-5 md:grid-cols-2">

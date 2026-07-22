@@ -6,7 +6,7 @@ function genToken() {
 
 function getClientIp(req: NextRequest){
   const fwd = req.headers.get("x-forwarded-for");
-  if(fwd) return fwd.split(",")[0].trim(); // FIX VERCEL
+  if(fwd) return fwd.split(",")[0].trim();
   return req.headers.get("x-real-ip") || req.headers.get("x-vercel-forwarded-for") || "local";
 }
 
@@ -16,8 +16,6 @@ function getSylvorHeaders(isBlock = false) {
     "Accept-CH-Lifetime": "86400",
     "Critical-CH": "Sec-CH-UA, Sec-CH-UA-Mobile",
     "Vary": "Sec-CH-UA, Sec-CH-UA-Mobile, Sec-CH-UA-Platform, Accept-Encoding",
-
-    // FIX VERCEL: harus no-store biar gak ke-cache edge
     "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
     "Pragma": "no-cache",
     "Expires": "0",
@@ -95,7 +93,6 @@ export default function proxy(req: NextRequest) {
       return forbid();
     }
     if (secFetchSite!== "same-origin" && secFetchMode!== "cors") {
-      // FIX VERCEL: izinin vercel.app
       if (!referer.includes("localhost") &&!referer.includes("sylvorlabs.com") &&!referer.includes("vercel.app")) return forbid();
     }
     if (path.includes("/init") && fpHeader) {

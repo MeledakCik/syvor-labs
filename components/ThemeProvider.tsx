@@ -17,7 +17,6 @@ export function useTheme() {
 }
 
 export default function ThemeProvider({ children }: { children: ReactNode }) {
-  // Site defaults to light mode, matching the reference design.
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {

@@ -27,7 +27,6 @@ const columns = [
 export default function Footer() {
   return (
     <footer className="w-full bg-[#FDFCF8] text-zinc-900 dark:bg-[#050507] dark:text-white">
-      {/* Top CTA bar */}
       <div className="border-b border-black/10 dark:border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-4 px-5 py-8 md:flex-row md:items-center md:px-8">
           <div className="flex items-center gap-3">
@@ -47,7 +46,6 @@ export default function Footer() {
 
       <div className="mx-auto max-w-7xl px-5 py-14 md:px-8 md:py-20">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr]">
-          {/* Brand */}
           <div>
             <div className="flex items-center gap-3">
               <SylvorIcon size={40} rounded="12px" />
@@ -73,7 +71,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Links */}
           <div className="grid grid-cols-3 gap-8 md:gap-12">
             {columns.map((col) => (
               <div key={col.title}>
@@ -95,8 +92,6 @@ export default function Footer() {
             ))}
           </div>
         </div>
-
-        {/* Bottom */}
         <div className="mt-16 flex flex-col justify-between gap-4 border-t border-black/10 pt-8 dark:border-white/10 md:flex-row">
           <div className="flex flex-wrap gap-6 text-xs text-zinc-400 dark:text-white/30">
             <span>© 2025 PT SYLVOR LABS</span>

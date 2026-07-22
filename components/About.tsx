@@ -46,7 +46,6 @@ export default function About() {
       className="w-full border-y border-zinc-200 bg-white py-20 dark:border-white/10 dark:bg-[#050507] md:py-28"
     >
       <div className="mx-auto grid max-w-7xl items-start gap-10 px-5 md:grid-cols-[1.1fr_0.9fr] md:gap-16 md:px-8">
-        {/* Left */}
         <div
           className={`transition-all duration-700 ${visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"}`}
         >
@@ -90,7 +89,6 @@ export default function About() {
           </div>
         </div>
 
-        {/* Right - Card beda animasi */}
         <div
           className={`rounded-2xl border border-zinc-200 bg-zinc-50 p-2 transition-all duration-700 hover:shadow-xl dark:border-white/10 dark:bg-zinc-900/50 ${visible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}
           style={{ transitionDelay: "150ms" }}

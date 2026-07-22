@@ -19,7 +19,6 @@ const Icons = {
   sast: "🧬",
 } as const;
 
-// Koordinat menggunakan persentase responsif yang dioptimalkan untuk Desktop & Mobile
 const modules = [
   {
     id: "waf",
@@ -220,11 +219,9 @@ export default function ArtifackBuilder() {
     });
 
     if (window.innerWidth < 768) {
-      // Posisi layout mobile saat scroll aktif
       tl.to(b, { left: "5%", top: "4%", xPercent: 0, yPercent: 0, scale: 0.38, ease: "power4.out" }, 0)
         .to(c, { left: "auto", right: "5%", top: "4%", xPercent: 0, yPercent: 0, scale: 0.38, ease: "power4.out" }, 0);
     } else {
-      // Posisi layout desktop saat scroll aktif
       tl.to(b, { left: "2%", top: "6%", xPercent: 0, yPercent: 0, scale: 0.45, ease: "power4.out" }, 0)
         .to(c, { left: "auto", right: "2%", top: "auto", bottom: "6%", xPercent: 0, yPercent: 0, scale: 0.45, ease: "power4.out" }, 0);
     }
@@ -282,7 +279,6 @@ export default function ArtifackBuilder() {
                 const tX = isMobile ? target.x.mobile : target.x.desktop;
                 const tY = isMobile ? target.y.mobile : target.y.desktop;
 
-                // Variasi lengkungan jaring laba-laba acak
                 const randomOffset = (parseInt(m.id, 36) + parseInt(lid, 36)) % 2 === 0 ? 15 : -15;
                 const mx = (mX + tX) / 2 + randomOffset;
                 const my = (mY + tY) / 2 + randomOffset;
@@ -346,7 +342,6 @@ export default function ArtifackBuilder() {
           </div>
         </div>
 
-        {/* Readme Tooltip saat Hover Kursor (Desktop/Mobile support) */}
         {hoveredNode && (
           <div
             className="absolute z-50 pointer-events-none -translate-x-1/2 -translate-y-full mb-3 w-56 sm:w-64 rounded-xl border border-black/10 bg-white/95 p-3.5 shadow-2xl backdrop-blur-md dark:border-white/15 dark:bg-[#111113]/95 animate-in fade-in zoom-in-95 duration-150"
@@ -367,7 +362,6 @@ export default function ArtifackBuilder() {
           </div>
         )}
 
-        {/* Modal Pop-up Klik Detail */}
         {sel && (
           <div className="absolute bottom-8 left-1/2 z-30 w-[92%] max-w-sm -translate-x-1/2 rounded-2xl border bg-white p-5 shadow-2xl dark:border-white/10 dark:bg-[#111113]">
             <div className="flex items-center gap-2">
